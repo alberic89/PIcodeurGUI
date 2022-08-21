@@ -1,7 +1,23 @@
 <!DOCTYPE html>
- <html> 
+ <html> <head>
+<script src="https://cdn.jsdelivr.net/npm/brython@3/brython.min.js">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/brython@3/brython_stdlib.js">
+  </script> </head>
+<body onload="brython()">
+<script type="text/python">
 
-<iframe src="https://trinket.io/embed/python/2a713e9b2d?outputOnly=true&runOption=run" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+from browser import document
+from browser.widgets.dialog import InfoDialog
 
+def click(ev):
+    InfoDialog("Hello", f"Bonjour, {document['zone'].value} !")
 
+# associe une fonction à l'événement "click" sur le bouton
+document["echo"].bind("click", click)
+
+</script>
+<input id="zone">
+<button id="echo">click !</button>
+</body>
 </html> 
