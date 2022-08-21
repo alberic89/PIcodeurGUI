@@ -8,16 +8,15 @@
 <script type="text/python">
 
 from browser import document
-from browser.widgets.dialog import InfoDialog
+import codeurGUI
 
 def click(ev):
-    InfoDialog("Hello", f"Bonjour, {document['zone'].value} !")
+    codeurGUI.main()
 
 # associe une fonction à l'événement "click" sur le bouton
 document["echo"].bind("click", click)
 
 </script>
-<input id="zone">
 <button id="echo">click !</button>
 </body>
 </html> 
