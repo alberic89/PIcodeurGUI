@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
 from tkinter import *
 from tkinter import messagebox
 from tkinter import filedialog
@@ -135,34 +136,38 @@ def isit(*args):
 	root.title('CodeurGUI - '+ variable.get())
 	if variable.get() == 'Morse':
 		try :
-			f3.pack_forget()
+			f3.place_forget()
 			f3_1.pack_forget()
-			f2.pack_forget()
+			f2.place_forget()
 		except :
 			pass
 		
-		f3_1.pack(side=RIGHT, expand=True)
-		checkbutton.pack()
+		f3_1.place(x=425, y=5)
+		f3_1.pack_propagate(False)
+		checkbutton.pack(expand=True)
+		
 	elif variable.get() == 'César':
 		try :
-			f3.pack_forget()
-			f3_1.pack_forget()
-			f2.pack_forget()
+			f3.place_forget()
+			f3_1.place_forget()
+			f2.place_forget()
 		except :
 			pass
 
-		f2.pack(side=RIGHT, expand=True)
-		spin1.pack()
-		spin2.pack()
+		f2.place(x=425, y=5)
+		f2.pack_propagate(False)
+		spin1.pack(expand=True)
+		spin2.pack(expand=True)
 	elif variable.get() == 'Vigenère':
 		try :
-			f3.pack_forget()
-			f3_1.pack_forget()
-			f2.pack_forget()
+			f3.place_forget()
+			f3_1.place_forget()
+			f2.place_forget()
 		except :
 			pass
-		f3.pack(side=RIGHT, expand=True)
-		clee.pack()
+		f3.place(x=425, y=5)
+		f3.pack_propagate(False)
+		clee.pack(expand=True)
 
 def launch():
 	sortie.delete(1.0, 'end')
@@ -180,7 +185,7 @@ def launch():
 		try :
 			sortie.insert(1.0, vigenere(entree.get(1.0, END+"-1c"), clee.get(), r=is_r.get()))
 		except :
-			messagebox.showwarning('CodeurGUI - Erreur', 'Une erreur c\'est produite, veuillez entrer des chaînes de caractère valide dans la zone de texte, ainsi que une clée en MAJUSCULE et sans espace ni caractères spéciaux ou accentuées.\nSi le problème persiste, merci d\'envoyer un rapport de bug.')
+			messagebox.showwarning('CodeurGUI - Erreur', 'Une erreur c\'est produite, veuillez entrer des chaînes de caractère valide dans la zone de texte, ainsi qu\'une clée valide.\nSi le problème persiste, merci d\'envoyer un rapport de bug.')
 
 def opentxtfile():
 	pathfile = filedialog.askopenfilename(title="Ouvrir un fichier texte", filetypes=(("fichiers texte","*.txt"), ("tous les fichiers","*.*")))
@@ -214,22 +219,20 @@ def apropos():
 	gui = Toplevel(root)
 	gui.title('À propos - CodeurGUI')
 	window_width = 300
-	window_height = 70
+	window_height = 60
 	center_x = int(screen_width/2 - window_width / 2)
 	center_y = int(screen_height/2 - window_height / 2)
-	gui.geometry('{}x{}+{}+{}'.format(window_width, window_height, center_x, center_y))
+	gui.geometry(str(window_width)+'x'+str(window_height)+'+'+str(center_x)+'+'+str(center_y))
 	l1 = Label(gui, text='À propos de CodeurGUI :')
 	bt1 = Button(gui, text='https://alberic89.github.io/PIcodeurGUI/', command=callback)
+	
 	l1.pack()
 	bt1.pack()
 
-
-	
 root = Tk()
 
-
 window_width = 700
-window_height = 500
+window_height = 503
 
 # get the screen dimension
 screen_width = root.winfo_screenwidth()
@@ -240,9 +243,11 @@ center_x = int(screen_width/2 - window_width / 2)
 center_y = int(screen_height/2 - window_height / 2)
 
 # set the position of the window to the center of the screen
-root.geometry('{}x{}+{}+{}'.format(window_width, window_height, center_x, center_y))
-
-root.iconphoto(True, PhotoImage(file='icon.png'))
+root.geometry(str(window_width)+'x'+str(window_height)+'+'+str(center_x)+'+'+str(center_y))
+try :	
+	root.iconphoto(True, PhotoImage(file='icon.png'))
+except :
+	pass
 
 OptionList = ('César', 'Vigenère', 'Morse')
 variable = StringVar(root)
@@ -250,11 +255,11 @@ variable.set(OptionList[0])
 is_esrom=IntVar()
 is_r=IntVar()
 
-froot = Frame(root)
-f1 = LabelFrame(froot, text='Sélectionnez votre code :')
-f2 = LabelFrame(froot, text='Sélectionnez le type de code César :')
-f3 = LabelFrame(froot, text='Entrez la clée du Vigenère :')
-f3_1=LabelFrame(froot, text='Est-ce un Esrom ?')
+froot = Frame(root, width =700, height =80)
+f1 = LabelFrame(froot, text='Sélectionnez votre code :', width =250, height =75)
+f2 = LabelFrame(froot, text='Sélectionnez le type de code César :', width =250, height =75)
+f3 = LabelFrame(froot, text='Entrez la clée du Vigenère :', width =250, height =75)
+f3_1=LabelFrame(froot, text='Est-ce un Esrom ?', width =250, height =75)
 f4 = LabelFrame(root, text='Entrez le message :')
 f5 = LabelFrame(root, text='Sortie :')
 f6 = LabelFrame(root, text='Lancez le décodage :')
@@ -284,18 +289,20 @@ menubar.add_command(label="À propos", command=apropos)
 root.config(menu=menubar)
 
 def main():	
-
 	
 	froot.pack(side=TOP)
-	f1.pack(side=LEFT, expand=True)
-	f2.pack(side=RIGHT, expand=True)
+	froot.pack_propagate(False)
+	f1.place(x=25, y=5)
+	f1.pack_propagate(False)
+	f2.place(x=425, y=5)
+	f2.pack_propagate(False)
 	f4.pack()
 	f5.pack()
 	f6.pack()
 	
-	opt.pack()
-	spin1.pack()
-	spin2.pack()
+	opt.pack(expand=True)
+	spin1.pack(expand=True)
+	spin2.pack(expand=True)
 	entree.pack()
 	sortie.pack()
 	checkbutton2.pack()
