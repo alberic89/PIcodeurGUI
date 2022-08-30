@@ -185,7 +185,7 @@ def launch():
 		try :
 			sortie.insert(1.0, vigenere(entree.get(1.0, END+"-1c"), clee.get(), r=is_r.get()))
 		except :
-			messagebox.showwarning('CodeurGUI - Erreur', 'Une erreur c\'est produite, veuillez entrer des chaînes de caractère valide dans la zone de texte, ainsi qu\'une clée valide.\nSi le problème persiste, merci d\'envoyer un rapport de bug.')
+			messagebox.showwarning('CodeurGUI - Erreur', 'Une erreur c\'est produite, veuillez entrer des chaînes de caractère valide dans la zone de texte, ainsi qu\'une clef valide.\nSi le problème persiste, merci d\'envoyer un rapport de bug.')
 
 def opentxtfile():
 	pathfile = filedialog.askopenfilename(title="Ouvrir un fichier texte", filetypes=(("fichiers texte","*.txt"), ("tous les fichiers","*.*")))
@@ -258,7 +258,7 @@ is_r=IntVar()
 froot = Frame(root, width =700, height =80)
 f1 = LabelFrame(froot, text='Sélectionnez votre code :', width =250, height =75)
 f2 = LabelFrame(froot, text='Sélectionnez le type de code César :', width =250, height =75)
-f3 = LabelFrame(froot, text='Entrez la clée du Vigenère :', width =250, height =75)
+f3 = LabelFrame(froot, text='Entrez la clef du Vigenère :', width =250, height =75)
 f3_1=LabelFrame(froot, text='Est-ce un Esrom ?', width =250, height =75)
 f4 = LabelFrame(root, text='Entrez le message :')
 f5 = LabelFrame(root, text='Sortie :')

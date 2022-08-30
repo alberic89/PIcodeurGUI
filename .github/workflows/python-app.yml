@@ -4,10 +4,7 @@
 name: Python application
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -44,6 +41,5 @@ jobs:
         with:
           name: ${{ runner.os }} Build
           path: |
-            build/*.exe
             build/*.bin
-            build/*.app/**/*
+            build/*.exe
