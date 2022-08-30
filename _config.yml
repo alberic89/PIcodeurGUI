@@ -1,1 +1,4 @@
 theme: jekyll-theme-hacker
+show_downloads: true
+github:
+	zip_url: https://github.com/alberic89/PIcodeurGUI/raw/main/build/PIcodeurGUI(py).tar.gz
